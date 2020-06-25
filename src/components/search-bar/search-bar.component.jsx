@@ -19,7 +19,7 @@ const SearchBar = () => {
     // Ajax call to API via axios
     const result = await axios.get(`${API_URL}?q=${searchTerm}`);
     // result
-    console.log(result.data);
+    console.log(result.data.items[0]);
 
     setBooks(result.data);
     
@@ -55,25 +55,7 @@ const SearchBar = () => {
       </div>
       <div className='result mt-8'>
       <ul>
-        {books.items !== undefined &&
-        books.items !== null &&
-        books.items.map((book, index) => {
-          return (
-            <li key={index}>
-              <div>
-                <img
-                  alt={`${book.volumeInfo.title} book`}
-                  src={`http://books.google.com/books/content?id=${book.id}&printsec=frontcover&img=1&zoom=1&source=gbs_api`}
-                />
-                <div>
-                  <h3>{book.volumeInfo.title}</h3>
-                  <p>{book.volumeInfo.publishedDate}</p>
-                </div>
-              </div>
-              <hr />
-            </li>
-          );
-        })}
+         <SearchResult books={books} />
       </ul>
       </div>
     </div>
