@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import Logo from '../../assets/images/app-logo.png';
+
 import './header.styles.scss';
 
 class Header extends React.Component {
@@ -19,7 +21,7 @@ class Header extends React.Component {
                 <nav className="flex items-center justify-between flex-wrap bg-blue-400 p-6 w-full z-10 top-0">
                     <div className="flex items-center flex-shrink-0 text-white mr-6">
                         <Link className="text-white no-underline hover:text-white hover:no-underline" to="/">
-                            <span className="text-2xl pl-2"><i className="em em-grinning"></i>Howlongtoread <span role='img' aria-label='books'>📚</span></span>
+                            <span className="text-2xl pl-2"><img className='logo' src={Logo} alt='logo' /> </span>
                         </Link>
                     </div>
             
