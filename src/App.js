@@ -7,6 +7,7 @@ import HomePage from './pages/homepage/homepage.component';
 import About from './pages/about/about.component';
 
 import Header from './components/header/header.component';
+import Footer from './components/footer/footer.component';
 
 class App extends React.Component {
   render() {
@@ -15,9 +16,12 @@ class App extends React.Component {
         <BrowserRouter>
           <Header />
            <Switch>
+             <main className='flex-grow'>
             <Route exact path='/' component={HomePage} />
             <Route exact path='/about' component={About} />
+            </main>
            </Switch>
+           <Footer />
         </BrowserRouter>
       </div>
     )
