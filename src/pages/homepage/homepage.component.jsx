@@ -3,7 +3,7 @@ import React from 'react';
 import './homepage.styles.scss';
 
 const HomePage = () => (
-    <div className='hoempage'>
+    <div className='homepage'>
         <h1 className='text-4xl'>Homepage</h1>
     </div>
 )
