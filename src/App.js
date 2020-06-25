@@ -16,10 +16,10 @@ class App extends React.Component {
         <BrowserRouter>
           <Header />
            <Switch>
-             <main className='flex-grow'>
+             
             <Route exact path='/' component={HomePage} />
             <Route exact path='/about' component={About} />
-            </main>
+           
            </Switch>
            <Footer />
         </BrowserRouter>

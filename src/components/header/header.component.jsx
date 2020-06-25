@@ -18,7 +18,7 @@ class Header extends React.Component {
     render() {
         return (
             <div className="header">
-                <nav className="flex items-center justify-between flex-wrap bg-blue-800 p-6 w-full z-10 top-0 sm:px-6 py-1 px-2">
+                <nav className="flex items-center justify-between flex-wrap bg-blue-800 p-6 w-full z-10 top-0 sm:px-6 py-1 px-2 shadow-xl">
                     <div className="flex items-center">
                         <Link className="text-white no-underline hover:text-white hover:no-underline" to="/">
                             <span className="text-2xl pl-2"><img className='logo' src={Logo} alt='logo' /> </span>
@@ -26,7 +26,7 @@ class Header extends React.Component {
                     </div>
             
                     <div className="block lg:hidden">
-                        <button onClick={this.toggleNav} id="nav-toggle" className="flex items-center px-3 py-2 border rounded text-white border-white hover:text-blue-400 hover:border-blue-400">
+                        <button onClick={this.toggleNav} id="nav-toggle" className="flex items-center px-3 py-2 border mt-8 mr-6 rounded text-white border-white hover:text-blue-400 hover:border-blue-400">
                             <svg className="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
                         </button>
                     </div>
