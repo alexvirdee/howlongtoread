@@ -2,9 +2,13 @@ import React from 'react';
 
 import './homepage.styles.scss';
 
+import SearchBar from '../../components/search-bar/search-bar.component';
+
 const HomePage = () => (
     <div className='homepage'>
-        <h1 className='text-4xl'>Homepage</h1>
+        <div className='search-books'>
+            <SearchBar />
+        </div>
     </div>
 )
 
