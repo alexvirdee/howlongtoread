@@ -18,8 +18,6 @@ const SearchBar = () => {
   const fetchBooks = async () => {
     // Ajax call to API via axios
     const result = await axios.get(`${API_URL}?q=${searchTerm}`);
-    // result
-    console.log(result.data.items[0]);
 
     setBooks(result.data);
     
@@ -33,6 +31,17 @@ const SearchBar = () => {
     fetchBooks();
   };
 
+  // Handle enter press
+  const handleKeyPress = (e) => {
+      if (e.key === 'Enter') {
+          e.preventDefault();
+
+          fetchBooks();
+
+      }
+  }
+
+
   return (
     <div className="search-bar p-8">
       <div className="bg-white flex items-center rounded-full shadow-xl">
@@ -43,6 +52,7 @@ const SearchBar = () => {
           placeholder="Try 'The Hunt For Red October by Tom Clancy' "
           onChange={onInputChange}
           value={searchTerm}
+          onKeyPress={handleKeyPress}
         />
         <div className="p-4">
           <button
