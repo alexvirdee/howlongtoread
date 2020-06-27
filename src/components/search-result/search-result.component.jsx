@@ -2,10 +2,25 @@ import React from 'react';
 
 import './search-result.styles.scss';
 
-const SearchResult = ({ books }) => {
-  const toggleDesc = () => {
-    document.getElementById('desc-content').classList.toggle('hidden');
-  };
+const SearchResult = ({ books, API_URL }) => {
+    useEffect(() => {
+        fetch(API_URL).then(books => {
+            const newRes = books.map(book => ({ ...book, isDescVisible: 'false' }))
+            setBooks(newRes);
+        })
+    })
+
+    const toggleDesc = (id) => {
+        const newBooks = books.map(book => book.id === id ? {...book, isDescVisible: !book.isDescVisible} :book);
+        setBooks(newBooks);
+    };
+
+//   const toggleDesc = () => {
+//     let descriptions = document.querySelectorAll('.desc-content');
+//     for (let i = 0; i < descriptions.length; i++) {
+//         console.log(descriptions[i]);
+//     }
+//   };
 
   return (
     <div className="search-result mb-6">
@@ -26,17 +41,21 @@ const SearchResult = ({ books }) => {
                     <div>
                       <p className="flex">
                         <button
-                          onClick={toggleDesc}
-                          class="bg-blue-800 mt-2 text-gray-200 rounded hover:bg-blue-400 px-4 py-3 text-sm focus:outline-none"
+                          onClick={() => toggleDesc(book.id)}
+                          className="bg-blue-800 mt-2 text-gray-200 rounded hover:bg-blue-400 px-4 py-3 text-sm focus:outline-none"
                           type="button"
                         >
                           View Description
                         </button>
                       </p>
+                      {book.isDescVisible &&
+                           <div
+                           className="block hidden border px-4 py-3 my-2 text-gray-700 desc-content"
+                         >
+                           <p>{book.volumeInfo.description}</p>
+                         </div>
+                      }
                     </div>
-                    <p id="desc-content" className="block hidden">
-                      {book.volumeInfo.description}
-                    </p>
                     <h3 className="text-xl text-blue-800 mt-2 p-2">
                       Average time to read:{' '}
                     </h3>
