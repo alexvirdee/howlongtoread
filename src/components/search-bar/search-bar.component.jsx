@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
 
@@ -9,6 +9,25 @@ import SearchResult from '../search-result/search-result.component';
 const SearchBar = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [books, setBooks] = useState({ items: [] });
+  
+  useEffect(() => {
+      async function fetchBooks() {
+          const newRes = await fetch(`${API_URL}?q=${searchTerm}`);
+          const json = await newRes.json();
+          const setVis = Object.keys(json).map(item => ({
+              ...item, isDescVisible: 'false'
+          }))
+          setBooks(setVis);
+      }
+      fetchBooks();
+  }, []);
+
+  const toggleDesc = (id) => {
+    const newBooks = books.items.map(book => book.id === id ? {...book, isDescVisible: !book.isDescVisible} : book);
+    console.log(newBooks);
+    setBooks(newBooks);
+}
+
   const onInputChange = (e) => {
     setSearchTerm(e.target.value);
   };
@@ -65,7 +84,7 @@ const SearchBar = () => {
       </div>
       <div className='result mt-8'>
       <ul>
-         <SearchResult books={books} />
+         <SearchResult books={books} toggleDesc={toggleDesc} />
       </ul>
       </div>
     </div>

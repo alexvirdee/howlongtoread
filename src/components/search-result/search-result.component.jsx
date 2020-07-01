@@ -2,25 +2,7 @@ import React from 'react';
 
 import './search-result.styles.scss';
 
-const SearchResult = ({ books, API_URL }) => {
-    useEffect(() => {
-        fetch(API_URL).then(books => {
-            const newRes = books.map(book => ({ ...book, isDescVisible: 'false' }))
-            setBooks(newRes);
-        })
-    })
-
-    const toggleDesc = (id) => {
-        const newBooks = books.map(book => book.id === id ? {...book, isDescVisible: !book.isDescVisible} :book);
-        setBooks(newBooks);
-    };
-
-//   const toggleDesc = () => {
-//     let descriptions = document.querySelectorAll('.desc-content');
-//     for (let i = 0; i < descriptions.length; i++) {
-//         console.log(descriptions[i]);
-//     }
-//   };
+const SearchResult = ({ books, toggleDesc }) => {
 
   return (
     <div className="search-result mb-6">
@@ -50,7 +32,7 @@ const SearchResult = ({ books, API_URL }) => {
                       </p>
                       {book.isDescVisible &&
                            <div
-                           className="block hidden border px-4 py-3 my-2 text-gray-700 desc-content"
+                           className="block border px-4 py-3 my-2 text-gray-700 desc-content"
                          >
                            <p>{book.volumeInfo.description}</p>
                          </div>
