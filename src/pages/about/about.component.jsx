@@ -29,7 +29,7 @@ const About = () => (
         </div>
 
         <div class="w-full md:w-3/5 py-1 text-center">
-          <img class="w-full md:w-4/5 z-50 lg:ml-8" src={BookStack} />
+          <LazyLoadImage class="w-full md:w-4/5 z-50 lg:ml-8" src={BookStack} effect="blur" />
         </div>
       </div>
     </div>

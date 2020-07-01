@@ -24,8 +24,7 @@ const SearchBar = () => {
 
   const toggleDesc = (id) => {
     const newBooks = books.items.map(book => book.id === id ? {...book, isDescVisible: !book.isDescVisible} : book);
-    console.log(newBooks);
-    setBooks(newBooks);
+    setBooks({items: newBooks});
 }
 
   const onInputChange = (e) => {

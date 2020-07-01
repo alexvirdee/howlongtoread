@@ -33,7 +33,10 @@ const SearchResult = ({ books, toggleDesc }) => {
                           View Description
                         </button>
                       </p>
-                      {book.isDescVisible &&
+                      {book.isDescVisible !== undefined &&
+                      book.isDescVisible !== null &&
+                      book.isDescVisible === true &&
+                      book.isDescVisible &&
                            <div
                            className="block border px-4 py-3 my-2 text-gray-700 desc-content"
                          >
