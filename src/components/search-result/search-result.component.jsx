@@ -1,4 +1,6 @@
 import React from 'react';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 import './search-result.styles.scss';
 
@@ -13,8 +15,9 @@ const SearchResult = ({ books, toggleDesc }) => {
             <div key={index} className="book-info mb-2">
               <li className="ml-4">
                 <div className="flex">
-                  <img
+                  <LazyLoadImage
                     className="book-img px-4 py-2"
+                    effect="blur"
                     alt={`${book.volumeInfo.title} book`}
                     src={`http://books.google.com/books/content?id=${book.id}&printsec=frontcover&img=1&zoom=1&source=gbs_api`}
                   />
