@@ -5,7 +5,6 @@ import axios from 'axios';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 import SearchResult from '../search-result/search-result.component';
-import BestSellers from '../../components/best-sellers/best-sellers.component';
 
 const SearchBar = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -83,7 +82,7 @@ const SearchBar = () => {
         </div>
       </div>
       <div className='result mt-8'>
-     <ul>
+      <ul>
          <SearchResult books={books} toggleDesc={toggleDesc} />
       </ul>      
       </div>
