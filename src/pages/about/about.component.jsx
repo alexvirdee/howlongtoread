@@ -19,7 +19,7 @@ const About = () => (
             {' '}
             I'm always looking up new and interesting books so I thought it would
             be a good idea to build out this website for users to quickly
-            figure how much time it will take them to read a book.
+            figure how much time it will take them to read the next one on their list.
           </p>
           <p className='italic text-sm'>“There is no friend as loyal as a book.”
 ― Ernest Hemingway</p>

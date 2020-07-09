@@ -8,6 +8,7 @@ import SearchResult from '../search-result/search-result.component';
 
 const SearchBar = () => {
   let API_URL = `https://www.googleapis.com/books/v1/volumes`;
+  
   const [searchTerm, setSearchTerm] = useState('');
   const [books, setBooks] = useState({ items: [] });
   
