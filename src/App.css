@@ -2,3 +2,7 @@
   margin: 0;
   padding: 0;
 }
+
+.cursive-font {
+  font-family: 'Dancing Script', cursive;
+}
