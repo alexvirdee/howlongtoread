@@ -6,19 +6,18 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const BestSellers = () => {
   const [bestSellers, setBestSellers] = useState({ lists: [] });
+
   let best_sellers_list = `https://api.nytimes.com/svc/books/v3/lists/overview.json?api-key=R51SdltKSZJqu3FX7kUc8l2AaGH0UcGD`;
 
   useEffect(() => {
+    const fetchBestSellersList = async () => {
+      const result = await axios.get(`${best_sellers_list}`);
+  
+      setBestSellers(result.data.results);
+    }
+
     fetchBestSellersList();
-  }, []);
-
-  const fetchBestSellersList = async () => {
-    const result = await axios.get(`${best_sellers_list}`);
-
-    console.log(result.data.results);
-
-    setBestSellers(result.data.results);
-  };
+  }, [best_sellers_list]);
 
   return (
     <div className="best-sellers-list">

@@ -7,6 +7,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import SearchResult from '../search-result/search-result.component';
 
 const SearchBar = () => {
+  let API_URL = `https://www.googleapis.com/books/v1/volumes`;
   const [searchTerm, setSearchTerm] = useState('');
   const [books, setBooks] = useState({ items: [] });
   
@@ -20,7 +21,7 @@ const SearchBar = () => {
           setBooks(setVis);
       }
       fetchBooks();
-  }, []);
+  }, [API_URL, searchTerm]);
 
   const toggleDesc = (id) => {
     const newBooks = books.items.map(book => book.id === id ? {...book, isDescVisible: !book.isDescVisible} : book);
@@ -30,8 +31,6 @@ const SearchBar = () => {
   const onInputChange = (e) => {
     setSearchTerm(e.target.value);
   };
-
-  let API_URL = `https://www.googleapis.com/books/v1/volumes`;
 
   const fetchBooks = async () => {
     // Ajax call to API via axios
