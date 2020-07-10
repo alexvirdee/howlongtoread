@@ -8,7 +8,6 @@ import './search-result.styles.scss';
 import BestSellers from '../best-sellers/best-sellers.component';
 
 const SearchResult = ({ books, toggleDesc }) => {
-
   return (
     <div className="search-result mb-6">
       {books.items !== undefined &&
@@ -18,7 +17,10 @@ const SearchResult = ({ books, toggleDesc }) => {
             <div key={index} className="book-info mb-2">
               <li className="ml-4">
                 <div className="flex">
-                  <Link to={`/book/${book.id}`}>
+                  <Link to={{
+                    pathname: `/book/${book.id}`,
+                    state: { id: `${book.id}`, description: `${book.volumeInfo.description}`}
+                  }}>
                   <LazyLoadImage
                     className="book-img px-4 py-2"
                     effect="blur"

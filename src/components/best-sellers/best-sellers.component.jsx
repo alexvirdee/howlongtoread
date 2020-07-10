@@ -12,6 +12,9 @@ const BestSellers = () => {
   useEffect(() => {
     const fetchBestSellersList = async () => {
       const result = await axios.get(`${best_sellers_list}`);
+
+      console.log(result);
+      
       setBestSellers(result.data.results);
     }
 
