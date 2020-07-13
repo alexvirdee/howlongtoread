@@ -8,26 +8,29 @@ import SearchResult from '../search-result/search-result.component';
 
 const SearchBar = () => {
   let API_URL = `https://www.googleapis.com/books/v1/volumes`;
-  
+
   const [searchTerm, setSearchTerm] = useState('');
   const [books, setBooks] = useState({ items: [] });
-  
+
   useEffect(() => {
-      async function fetchBooks() {
-          const newRes = await fetch(`${API_URL}?q=${searchTerm}`);
-          const json = await newRes.json();
-          const setVis = Object.keys(json).map(item => ({
-              ...item, isDescVisible: 'false'
-          }))
-          setBooks(setVis);
-      }
-      fetchBooks();
+    async function fetchBooks() {
+      const newRes = await fetch(`${API_URL}?q=${searchTerm}`);
+      const json = await newRes.json();
+      const setVis = Object.keys(json).map((item) => ({
+        ...item,
+        isDescVisible: 'false',
+      }));
+      setBooks(setVis);
+    }
+    fetchBooks();
   }, [API_URL, searchTerm]);
 
   const toggleDesc = (id) => {
-    const newBooks = books.items.map(book => book.id === id ? {...book, isDescVisible: !book.isDescVisible} : book);
-    setBooks({items: newBooks});
-}
+    const newBooks = books.items.map((book) =>
+      book.id === id ? { ...book, isDescVisible: !book.isDescVisible } : book
+    );
+    setBooks({ items: newBooks });
+  };
 
   const onInputChange = (e) => {
     setSearchTerm(e.target.value);
@@ -38,7 +41,6 @@ const SearchBar = () => {
     const result = await axios.get(`${API_URL}?q=${searchTerm}`);
 
     setBooks(result.data);
-    
   };
 
   // Handle submit
@@ -51,14 +53,12 @@ const SearchBar = () => {
 
   // Handle enter press
   const handleKeyPress = (e) => {
-      if (e.key === 'Enter') {
-          e.preventDefault();
+    if (e.key === 'Enter') {
+      e.preventDefault();
 
-          fetchBooks();
-
-      }
-  }
-
+      fetchBooks();
+    }
+  };
 
   return (
     <div className="search-bar p-8">
@@ -81,10 +81,10 @@ const SearchBar = () => {
           </button>
         </div>
       </div>
-      <div className='result mt-8'>
-      <ul>
-         <SearchResult books={books} toggleDesc={toggleDesc} />
-      </ul>      
+      <div className="result mt-8">
+        <ul>
+          <SearchResult books={books} toggleDesc={toggleDesc} />
+        </ul>
       </div>
     </div>
   );
