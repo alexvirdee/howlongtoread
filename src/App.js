@@ -9,6 +9,7 @@ import About from './pages/about/about.component';
 
 import Header from './components/header/header.component';
 import Footer from './components/footer/footer.component';
+import BestSellersPage from './pages/bestsellers/bestsellers.component';
 
 class App extends React.Component {
   render() {
@@ -20,6 +21,7 @@ class App extends React.Component {
             <Route exact path='/' component={HomePage} />
             <Route exact path='/about' component={About} />
             <Route path='/book/:bookId' component={BookPage} />
+            <Route path='/bestsellers/:categoryId' component={BestSellersPage} />
            </Switch>
            <Footer />
         </BrowserRouter>

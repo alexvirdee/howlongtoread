@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import { LazyLoadImage } from 'react-lazy-load-image-component';
@@ -14,6 +15,7 @@ const BestSellers = () => {
       const result = await axios.get(`${best_sellers_list}`);
 
       console.log(result);
+      console.log(result.data.lists)
       
       setBestSellers(result.data.results);
     }
@@ -33,11 +35,16 @@ const BestSellers = () => {
             <div className="inline-flex justify-center mx-4 my-2" key={index}>
               <div className="flex-1">
                 <article className="overflow-hidden rounded-lg shadow-lg">
+                <Link to={{
+                    pathname: `/bestsellers/`,
+                    state: { id: `${list.id}`}
+                  }}>
                   <LazyLoadImage
                     effect="blur"
                     className="sm:h-48 md:h-56 lg:h-64 block w-full"
                     src={list.list_image}
                   />
+                  </Link>
                   <header className="flex items-center justify-center leading-tight p-2 md:p-4">
                          <h1 className="text-lg">
                         {list.list_name}
