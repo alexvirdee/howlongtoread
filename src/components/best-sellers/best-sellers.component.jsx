@@ -16,9 +16,9 @@ const BestSellers = () => {
 
       // console.log(result);
       // console.log(result.data.lists)
-      
+
       setBestSellers(result.data.results);
-    }
+    };
 
     fetchBestSellersList();
   }, [best_sellers_list]);
@@ -31,25 +31,33 @@ const BestSellers = () => {
       {bestSellers.lists !== undefined &&
         bestSellers.lists !== null &&
         bestSellers.lists.map((list, index) => {
-          console.log(list);
+          
+          let books = list.books.map((item) => {
+            return item;
+          });
+
           return (
             <div className="inline-flex justify-center mx-4 my-2" key={index}>
               <div className="flex-1">
                 <article className="overflow-hidden rounded-lg shadow-lg">
-                <Link to={{
-                    pathname: `/bestsellers/${list.list_id}`,
-                    state: { id: `${list.list_id}`}
-                  }}>
-                  <LazyLoadImage
-                    effect="blur"
-                    className="sm:h-48 md:h-56 lg:h-64 block w-full"
-                    src={list.list_image}
-                  />
+                  <Link
+                    to={{
+                      pathname: `/bestsellers/${list.list_id}`,
+                      state: {
+                        id: `${list.list_id}`,
+                        title: `${list.display_name}`,
+                        books: books,
+                      },
+                    }}
+                  >
+                    <LazyLoadImage
+                      effect="blur"
+                      className="sm:h-48 md:h-56 lg:h-64 block w-full"
+                      src={list.list_image}
+                    />
                   </Link>
                   <header className="flex items-center justify-center leading-tight p-2 md:p-4">
-                         <h1 className="text-lg">
-                        {list.list_name}
-                         </h1>
+                    <h1 className="text-lg">{list.list_name}</h1>
                   </header>
                 </article>
               </div>

@@ -14,7 +14,6 @@ const SearchResult = ({ books, toggleDesc }) => {
       {books.items !== undefined &&
         books.items !== null ?
         books.items.map((book, index) => {
-         console.log(book.volumeInfo);
           return (
             <div key={index} className="book-info mb-2">
               <li className="ml-4">
@@ -34,7 +33,7 @@ const SearchResult = ({ books, toggleDesc }) => {
                     <h3 className="text-2xl">{book.volumeInfo.title}</h3>
                     <div>
                       <div className="flex">
-                      <button class="bg-green-400 mt-2 text-green-100 rounded hover:bg-green-400 px-4 py-3 text-sm focus:outline-none mr-2 pointer-events-none">
+                      <button className="bg-green-400 mt-2 text-green-100 rounded hover:bg-green-400 px-4 py-3 text-sm focus:outline-none mr-2 pointer-events-none">
                        { ((book.volumeInfo.pageCount * 300) / 250 / 60).toFixed(2) } Hours
                        </button>
 

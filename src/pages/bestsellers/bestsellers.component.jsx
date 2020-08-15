@@ -1,4 +1,5 @@
 import React from 'react';
+
 import BestSellersCategory from '../../components/best-sellers-category/best-sellers-category.component';
 
 const BestSellersPage = ({ match, location, ...props }) => (
