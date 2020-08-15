@@ -31,13 +31,14 @@ const BestSellers = () => {
       {bestSellers.lists !== undefined &&
         bestSellers.lists !== null &&
         bestSellers.lists.map((list, index) => {
+          console.log(list);
           return (
             <div className="inline-flex justify-center mx-4 my-2" key={index}>
               <div className="flex-1">
                 <article className="overflow-hidden rounded-lg shadow-lg">
                 <Link to={{
-                    pathname: `/bestsellers/`,
-                    state: { id: `${list.id}`}
+                    pathname: `/bestsellers/${list.list_id}`,
+                    state: { id: `${list.list_id}`}
                   }}>
                   <LazyLoadImage
                     effect="blur"
