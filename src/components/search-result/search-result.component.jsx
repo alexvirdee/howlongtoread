@@ -14,7 +14,7 @@ const SearchResult = ({ books, toggleDesc }) => {
       {books.items !== undefined &&
         books.items !== null ?
         books.items.map((book, index) => {
-         console.log(book.volumeInfo.pageCount);
+         console.log(book.volumeInfo);
           return (
             <div key={index} className="book-info mb-2">
               <li className="ml-4">
@@ -51,9 +51,9 @@ const SearchResult = ({ books, toggleDesc }) => {
                       book.isDescVisible === true &&
                       book.isDescVisible &&
                            <div
-                           className="block border px-4 py-3 my-2 text-gray-700 desc-content"
+                           className="block border px-4 py-3 my-2 text-blue-700 desc-content mt-2"
                          >
-                           <p>{book.volumeInfo.description}</p>
+                           <p>{book.volumeInfo.description == null ? <span>No Description available for {book.volumeInfo.title}.</span> : <span>{book.volumeInfo.description}</span>}</p>
                          </div>
                       }
                     </div>
