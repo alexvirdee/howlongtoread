@@ -8,11 +8,13 @@ import './search-result.styles.scss';
 import BestSellers from '../best-sellers/best-sellers.component';
 
 const SearchResult = ({ books, toggleDesc }) => {
+
   return (
     <div className="search-result mb-6">
       {books.items !== undefined &&
         books.items !== null ?
         books.items.map((book, index) => {
+         console.log(book.volumeInfo.pageCount);
           return (
             <div key={index} className="book-info mb-2">
               <li className="ml-4">
@@ -31,15 +33,19 @@ const SearchResult = ({ books, toggleDesc }) => {
                   <div className="flex-1">
                     <h3 className="text-2xl">{book.volumeInfo.title}</h3>
                     <div>
-                      <p className="flex">
+                      <div className="flex">
+                      <button class="bg-green-400 mt-2 text-green-100 rounded hover:bg-green-400 px-4 py-3 text-sm focus:outline-none mr-2 pointer-events-none">
+                       { ((book.volumeInfo.pageCount * 300) / 250 / 60).toFixed(2) } Hours
+                       </button>
+
                         <button
                           onClick={() => toggleDesc(book.id)}
-                          className="bg-blue-800 mt-2 text-gray-200 rounded hover:bg-blue-400 px-4 py-3 text-sm focus:outline-none"
+                          className="bg-blue-800 mt-2 text-blue-100 rounded hover:bg-blue-400 px-4 py-3 text-sm focus:outline-none"
                           type="button"
                         >
                           View Description
                         </button>
-                      </p>
+                      </div>
                       {book.isDescVisible !== undefined &&
                       book.isDescVisible !== null &&
                       book.isDescVisible === true &&
@@ -51,9 +57,6 @@ const SearchResult = ({ books, toggleDesc }) => {
                          </div>
                       }
                     </div>
-                    <h3 className="text-xl text-blue-800 mt-2 p-2">
-                      Average time to read:{' '}
-                    </h3>
                   </div>
                 </div>
                 <hr />

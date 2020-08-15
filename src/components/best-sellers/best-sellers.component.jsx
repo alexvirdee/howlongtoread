@@ -14,8 +14,8 @@ const BestSellers = () => {
     const fetchBestSellersList = async () => {
       const result = await axios.get(`${best_sellers_list}`);
 
-      console.log(result);
-      console.log(result.data.lists)
+      // console.log(result);
+      // console.log(result.data.lists)
       
       setBestSellers(result.data.results);
     }
@@ -48,7 +48,7 @@ const BestSellers = () => {
                   <header className="flex items-center justify-center leading-tight p-2 md:p-4">
                          <h1 className="text-lg">
                         {list.list_name}
-                    </h1>
+                         </h1>
                   </header>
                 </article>
               </div>

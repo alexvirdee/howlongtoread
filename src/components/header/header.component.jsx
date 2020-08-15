@@ -34,13 +34,10 @@ class Header extends React.Component {
                     <div className="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-8" id="nav-content">
                         <ul className="list-reset lg:flex justify-end flex-1 items-center">
                             <li className="mr-3">
-                                <Link className="inline-block py-2 px-4 text-white hover:text-blue-400 no-underline" to="/">Home</Link>
+                                <Link className="inline-block py-2 px-4 text-blue-100 hover:text-blue-200 no-underline" to="/">Home</Link>
                             </li>
                             <li className="mr-3">
-                                <Link className="inline-block text-white no-underline hover:text-blue-400 hover:text-underline py-2 px-4" to="/about">About</Link>
-                            </li>
-                            <li className="mr-3">
-                                <a className="inline-block text-white no-underline hover:text-blue-400 hover:text-underline py-2 px-4" href="http://www.alexvirdee.com/">Portfolio</a>
+                                <Link className="inline-block text-blue-100 hover:text-blue-200 no-underline py-2 px-4" to="/about">About</Link>
                             </li>
                         </ul>
                     </div>
