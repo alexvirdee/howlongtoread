@@ -1,7 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import {
+  faHeart,
+  faClock,
+  faBook,
+  faCommentDots,
+} from '@fortawesome/free-solid-svg-icons';
 
 import { motion } from 'framer-motion';
 
@@ -12,7 +17,6 @@ import './search-result.styles.scss';
 import BestSellers from '../best-sellers/best-sellers.component';
 
 const SearchResult = ({ books, toggleDesc }) => {
-
   return (
     <div className="search-result mb-6 px-4">
       {books.items !== undefined && books.items !== null ? (
@@ -45,14 +49,10 @@ const SearchResult = ({ books, toggleDesc }) => {
                       <div className="md:flex">
                         <button className="bg-green-400 mt-2 text-green-100 rounded hover:bg-green-400 px-4 py-3 text-sm focus:outline-none mr-2 pointer-events-none">
                           {book.volumeInfo.pageCount == null ? (
-                            <span>Unknown</span>
-                          ) : (
-                            (
-                              (book.volumeInfo.pageCount * 300) /
-                              250 /
-                              60
-                            ).toFixed(2)
-                          )}{' '}
+                            <span>
+                              <FontAwesomeIcon icon={faClock} /> Unknown
+                            </span>
+                          ) : <span> <FontAwesomeIcon icon={faClock} />  {(((book.volumeInfo.pageCount * 300) / 250 / 60).toFixed(2))} </span> }{' '}
                           Hours
                         </button>
 
@@ -61,12 +61,17 @@ const SearchResult = ({ books, toggleDesc }) => {
                           className="bg-blue-800 mt-2 text-blue-100 rounded hover:bg-blue-400 px-4 py-3 text-sm focus:outline-none mr-2"
                           type="button"
                         >
-                          View Description
+                         <FontAwesomeIcon icon={faCommentDots} /> View Description
                         </button>
 
-                        <button className="bg-red-600 mt-2 text-red-100 rounded hover:bg-red-400 px-4 py-3 text-sm focus:outline-none pointer-events-none">
+                        <button className="bg-red-600 mt-2 text-red-100 rounded hover:bg-red-400 px-4 py-3 text-sm focus:outline-none pointer-events-none mr-2">
                           <FontAwesomeIcon icon={faHeart} />{' '}
                           {book.volumeInfo.averageRating} Average Rating
+                        </button>
+
+                        <button className="bg-orange-400 mt-2 text-orange-100 rounded hover:bg-orange-600 px-4 py-3 text-sm focus:outline-none">
+                          <FontAwesomeIcon icon={faBook} />{' '}
+                           View Book
                         </button>
                       </div>
                       {book.isDescVisible !== undefined &&
@@ -74,26 +79,24 @@ const SearchResult = ({ books, toggleDesc }) => {
                         book.isDescVisible === true &&
                         book.isDescVisible && (
                           <div className="block border px-4 py-3 my-2 text-blue-700 desc-content mt-2 transition duration-300 ease-out bg-blue-100">
-                          
-                              {book.volumeInfo.description == null ? (
-                                <motion.div
-                                  initial={{ opacity: 0 }}
-                                  animate={{ opacity: 1 }}
-                                  transition={{ delay: 0.5 }}
-                                >
-                                  No Description available for{' '}
-                                  {book.volumeInfo.title}.
-                                </motion.div>
-                              ) : (
-                                <motion.div
-                                  initial={{ opacity: 0 }}
-                                  animate={{ opacity: 1 }}
-                                  transition={{ delay: 0.5 }}
-                                >
-                                  {book.volumeInfo.description}
-                                </motion.div>
-                              )}
-                       
+                            {book.volumeInfo.description == null ? (
+                              <motion.div
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ delay: 0.5 }}
+                              >
+                                No Description available for{' '}
+                                {book.volumeInfo.title}.
+                              </motion.div>
+                            ) : (
+                              <motion.div
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ delay: 0.5 }}
+                              >
+                                {book.volumeInfo.description}
+                              </motion.div>
+                            )}
                           </div>
                         )}
                     </div>
