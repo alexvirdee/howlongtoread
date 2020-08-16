@@ -31,7 +31,12 @@ const SearchResult = ({ books, toggleDesc }) => {
                       pathname: `/book/${book.id}`,
                       state: {
                         id: `${book.id}`,
+                        title: `${book.volumeInfo.title}`,
                         description: `${book.volumeInfo.description}`,
+                        category: `${book.volumeInfo.categories}`,
+                        date: `${book.volumeInfo.publishedDate}`,
+                        publisher: `${book.volumeInfo.publisher}`,
+                        authors: `${book.volumeInfo.authors}`,
                       },
                     }}
                   >
@@ -68,11 +73,23 @@ const SearchResult = ({ books, toggleDesc }) => {
                           <FontAwesomeIcon icon={faHeart} />{' '}
                           {book.volumeInfo.averageRating} Average Rating
                         </button>
-
+                        <Link   to={{
+                      pathname: `/book/${book.id}`,
+                      state: {
+                        id: `${book.id}`,
+                        title: `${book.volumeInfo.title}`,
+                        description: `${book.volumeInfo.description}`,
+                        category: `${book.volumeInfo.categories}`,
+                        date: `${book.volumeInfo.publishedDate}`,
+                        publisher: `${book.volumeInfo.publisher}`,
+                        authors: `${book.volumeInfo.authors}`,
+                      },
+                    }}>
                         <button className="bg-orange-400 mt-2 text-orange-100 rounded hover:bg-orange-600 px-4 py-3 text-sm focus:outline-none">
                           <FontAwesomeIcon icon={faBook} />{' '}
                            View Book
                         </button>
+                        </Link>
                       </div>
                       {book.isDescVisible !== undefined &&
                         book.isDescVisible !== null &&

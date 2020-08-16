@@ -28,8 +28,8 @@ const BestSellersCategory = ({ match, location }) => {
         theBestSellerBooks !== null &&
         theBestSellerBooks.map((book, index) => {
           return (
-            <div key={index} className="inline-flex justify-center px-2 mr-4 ml-4 mt-4">
-              <div className="flex-1 wrapper max-w-xs bg-gray-50 rounded-b-md shadow-lg overflow-hidden">
+            <div key={index} className="inline-flex px-2 mr-4 ml-4 mt-4">
+              <div className="flex-1 w-1/3 h-auto wrapper max-w-xs bg-gray-50 rounded-b-md shadow-lg overflow-hidden">
                 <div className="bg-gray-100">
                   <LazyLoadImage
                     effect="blur"
