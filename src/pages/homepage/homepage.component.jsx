@@ -6,7 +6,7 @@ import SearchBar from '../../components/search-bar/search-bar.component';
 
 
 const HomePage = () => (
-    <div className='homepage'>
+    <div className='homepage mb-6'>
         <div className='search-books'>
             <SearchBar />
         </div>
