@@ -9,15 +9,22 @@ const BookView = ({ match, location }) => {
 
   return (
     <div className="book-view">
-      <h1 className="text-center text-3xl cursive-font mt-2">
+      <h1 className="text-center text-3xl cursive-font mt-2 mb-4">
         <span className="text-blue-700 font-bold"> {data.state.title}</span>
       </h1>
-      <LazyLoadImage
+      <div className="container md:flex">
+        <div className="w-1/2">
+        <LazyLoadImage
         className="book-img px-4 py-2 ml-24"
         effect="blur"
         alt="book"
         src={`http://books.google.com/books/content?id=${data.state.id}&printsec=frontcover&img=1&source=gbs_api`}
       />
+        </div>
+        <div className="w-1/2">
+          <h1 className="text-2xl font-bold">Book Details + Words Per Minute Information</h1> 
+        </div>
+      </div>
     </div>
   );
 };

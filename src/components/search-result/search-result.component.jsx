@@ -57,7 +57,17 @@ const SearchResult = ({ books, toggleDesc }) => {
                             <span>
                               <FontAwesomeIcon icon={faClock} /> Unknown
                             </span>
-                          ) : <span> <FontAwesomeIcon icon={faClock} />  {(((book.volumeInfo.pageCount * 300) / 250 / 60).toFixed(2))} </span> }{' '}
+                          ) : (
+                            <span>
+                              {' '}
+                              <FontAwesomeIcon icon={faClock} />{' '}
+                              {(
+                                (book.volumeInfo.pageCount * 300) /
+                                250 /
+                                60
+                              ).toFixed(2)}{' '}
+                            </span>
+                          )}{' '}
                           Hours
                         </button>
 
@@ -66,29 +76,31 @@ const SearchResult = ({ books, toggleDesc }) => {
                           className="bg-blue-800 mt-2 text-blue-100 rounded hover:bg-blue-400 px-4 py-3 text-sm focus:outline-none mr-2"
                           type="button"
                         >
-                         <FontAwesomeIcon icon={faCommentDots} /> View Description
+                          <FontAwesomeIcon icon={faCommentDots} /> View
+                          Description
                         </button>
 
                         <button className="bg-red-600 mt-2 text-red-100 rounded hover:bg-red-400 px-4 py-3 text-sm focus:outline-none pointer-events-none mr-2">
                           <FontAwesomeIcon icon={faHeart} />{' '}
                           {book.volumeInfo.averageRating} Average Rating
                         </button>
-                        <Link   to={{
-                      pathname: `/book/${book.id}`,
-                      state: {
-                        id: `${book.id}`,
-                        title: `${book.volumeInfo.title}`,
-                        description: `${book.volumeInfo.description}`,
-                        category: `${book.volumeInfo.categories}`,
-                        date: `${book.volumeInfo.publishedDate}`,
-                        publisher: `${book.volumeInfo.publisher}`,
-                        authors: `${book.volumeInfo.authors}`,
-                      },
-                    }}>
-                        <button className="bg-orange-400 mt-2 text-orange-100 rounded hover:bg-orange-600 px-4 py-3 text-sm focus:outline-none">
-                          <FontAwesomeIcon icon={faBook} />{' '}
-                           View Book
-                        </button>
+                        <Link
+                          to={{
+                            pathname: `/book/${book.id}`,
+                            state: {
+                              id: `${book.id}`,
+                              title: `${book.volumeInfo.title}`,
+                              description: `${book.volumeInfo.description}`,
+                              category: `${book.volumeInfo.categories}`,
+                              date: `${book.volumeInfo.publishedDate}`,
+                              publisher: `${book.volumeInfo.publisher}`,
+                              authors: `${book.volumeInfo.authors}`,
+                            },
+                          }}
+                        >
+                          <button className="bg-orange-400 mt-2 text-orange-100 rounded hover:bg-orange-600 px-4 py-3 text-sm focus:outline-none">
+                            <FontAwesomeIcon icon={faBook} /> View Book
+                          </button>
                         </Link>
                       </div>
                       {book.isDescVisible !== undefined &&
