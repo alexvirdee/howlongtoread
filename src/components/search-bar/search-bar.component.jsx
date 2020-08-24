@@ -67,7 +67,7 @@ const SearchBar = () => {
           className="rounded-l-full w-full py-4 px-6 text-gray-700 leading-tight focus:outline-none"
           id="search"
           type="text"
-          placeholder="Try 'The Hunt For Red October by Tom Clancy' "
+          placeholder="The Hunt For Red October by Tom Clancy "
           onChange={onInputChange}
           value={searchTerm}
           onKeyPress={handleKeyPress}

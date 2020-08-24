@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
@@ -43,9 +44,24 @@ const BestSellersCategory = ({ match, location }) => {
                     {titleCase(`${book.title}`)} by {book.author}
                   </h3>
                 </div>
+                <Link
+                          to={{
+                            pathname: `/book/${book.title}`,
+                            state: {
+                              id: `${book.id}`,
+                              title: `${book.title}`,
+                              description: `${book.description}`,
+                              category: `${book.categories}`,
+                              date: `${book.publishedDate}`,
+                              publisher: `${book.publisher}`,
+                              authors: `${book.authors}`,
+                            },
+                          }}
+                        >
                 <button className="bg-blue-800 w-full flex justify-center py-2 text-blue-100 font-semibold transition duration-300 hover:bg-blue-500 mt-4">
                   View Book
                 </button>
+                </Link>
               </div>
             </div>
           );
